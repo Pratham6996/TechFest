@@ -1,0 +1,221 @@
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgb(130, 106, 251);
+}
+
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+
+.container .form {
+  margin-top: 30px;
+}
+
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.input-box label {
+  color: #333;
+  font-weight: 500;
+}
+
+.form :where(.input-box input, .select-box, .input-box input[type="file"]) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+  background: #f9f9f9;
+}
+
+/* Input focus effect */
+.input-box input:focus,
+.input-box input[type="file"]:focus {
+  border-color: rgb(130, 106, 251);
+  box-shadow: 0 1px 5px rgba(130, 106, 251, 0.2);
+}
+
+/* File Upload Styling */
+.input-box input[type="file"] {
+  padding: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Payment Upload Field */
+.input-box input[type="file"]::-webkit-file-upload-button {
+  background: rgb(130, 106, 251);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.input-box input[type="file"]::-webkit-file-upload-button:hover {
+  background: rgb(88, 56, 250);
+}
+
+.form input,
+.form select {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+  background: #fff;
+}
+
+/* Input focus effect */
+.input-box input:focus,
+.input-box select:focus {
+  border-color: rgb(130, 106, 251);
+  box-shadow: 0 2px 4px rgba(130, 106, 251, 0.2);
+}
+
+/* Branch dropdown & Other input */
+#other-branch {
+  display: none;
+  margin-top: 10px;
+}
+
+/* Remove number increment/decrement buttons */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.multi-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.multi-select input {
+  display: none;
+}
+
+.multi-select label {
+  background: #f4f4f4;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.multi-select input:checked + label {
+  background: rgb(130, 106, 251);
+  color: white;
+}
+
+
+/* Gender selection */
+.gender-box {
+  margin-top: 20px;
+}
+
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.gender-option {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+
+.gender {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.gender input {
+  accent-color: rgb(130, 106, 251);
+}
+
+.gender label {
+  color: #707070;
+  cursor: pointer;
+}
+
+/* Submit button */
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgb(130, 106, 251);
+  border-radius: 6px;
+}
+
+.form button:hover {
+  background: rgb(88, 56, 250);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+
+  .gender-option {
+    row-gap: 15px;
+  }
+}
