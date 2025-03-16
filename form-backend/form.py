@@ -2,16 +2,10 @@ import gspread
 import pywhatkit as kit
 import time
 
-# Google Sheets API Authentication
 gc = gspread.service_account(filename="d:/Web Projects/TechFest/TechFest/form-backend/credentials.json")
-
-# Open Google Sheet
-sheet = gc.open("TechFest").sheet1  # Ensure "TechFest" is the correct sheet name
-
-# Fetch Data
+sheet = gc.open("TechFest").sheet1 
 data = sheet.get_all_records()
 
-# Entry Fees Dictionary with Emojis
 entry_fees = {
     "BGMI": (100, "🎯"),
     "Tech Quiz": (200, "🧠"),
@@ -20,12 +14,9 @@ entry_fees = {
     "Error Finding": (500, "🐞")
 }
 
-# Loop Through Each Participant
 for row in data:
     name = row.get("Full Name", "").lstrip(":").strip()
     phone = f'+91{row.get("Phone Number", "").lstrip(":").strip()}'
-
-    # Find the correct "Event" column (ignores spaces & case differences)
     event_key = next((key for key in row.keys() if key.strip().lower() == "event"), None)
 
     if event_key and row[event_key]:
@@ -36,11 +27,8 @@ for row in data:
             continue
 
         total_fee = sum(entry_fees[event][0] for event in events_selected)
-
-        # Format selected events as a numbered list with emojis
         formatted_events = "\n".join([f"{i+1}. {event} {entry_fees[event][1]}" for i, event in enumerate(events_selected)])
 
-        # Message Template
         message = f"""Hey {name},  
 Great to see you participating in TechSagar 2025! 🎉  
 
@@ -54,10 +42,7 @@ Please scan the QR below to complete your payment and share the transaction scre
 Thank you, and we’re excited to see you at the event! 🚀🎭  
 """
 
-        # Send WhatsApp Message with Image
         kit.sendwhats_image(phone, "d:/Web Projects/TechFest/TechFest/form-backend/upi.jpg", caption=message)
-
-        # Wait to prevent spam detection
         time.sleep(20)
 
 print(" Messages sent successfully with UPI image!")
