@@ -38,6 +38,6 @@ for row in data:
         # Send Message + Image Together
         kit.sendwhats_image(phone, "d:/Web Projects/TechFest/TechFest/form-backend/upi.jpg", caption=message)
 
-        time.sleep(10)  # Prevents spam & ensures WhatsApp Web loads properly
+        time.sleep(20)  # Prevents spam & ensures WhatsApp Web loads properly
 
 print("✅ Messages sent successfully with UPI image!")
