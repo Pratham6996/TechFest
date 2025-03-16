@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Expandable Card</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .expanded-card {
+      background: white;
+      padding: 20px;
+      width: 50%;
+      max-height: 80vh;
+      overflow-y: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 25;
+    }
+
+    .card {
+      margin: auto;
+      width: min(300px, 100%);
+      height: 370px;
+      position: relative;
+      perspective: 2000px;
+      z-index: 10;
+    }
+
+    .card-content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-front {
+      background-color: #fefefe;
+      color: #141417;
+      padding: 0.5rem;
+      z-index: 2;
+    }
+
+    .card-back {
+      background-color: #f8f8f8;
+      color: #141417;
+      transform: rotateY(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card__hero {
+      background-color: #fef4e2;
+      border-radius: 0.5rem 0.5rem 0 0;
+      padding: 1.5rem;
+      font-size: 0.875rem;
+    }
+
+    .card__hero .card__job-title {
+      margin: 2rem 0;
+      font-size: 1.8rem;
+      font-weight: 600;
+      padding-right: 2rem;
+    }
+
+    .card__footer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: start;
+      flex-direction: column;
+      padding: 0.75rem;
+      row-gap: 1rem;
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+
+    .card__btn {
+      width: 100%;
+      font-weight: 400;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      padding: 0.5rem 1.25rem;
+      border-radius: 1rem;
+      background-color: #141417;
+      color: #fff;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .card__btn:hover {
+      background-color: #2a2a2d;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1.25rem;
+      background-color: #141417;
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay" id="overlay">
+    <div class="expanded-card" id="expandedCard">
+      <h2>Battle Grounds Mobile India</h2>
+      <p>Join us for an exciting gaming experience at YTIET Quadrangle!</p>
+      <p>Compete in team battles, win exclusive prizes, and showcase your gaming skills!</p>
+      <button class="back-btn" id="closePopup">Close</button>
+    </div>
+  </div>
+
+  <article class="card">
+    <div class="card-content">
+      <div class="card-front">
+        <section class="card__hero">
+          <header class="card__hero-header">
+            <span>Tuesday: 15:30-19:30</span>
+          </header>
+          <p class="card__job-title">Battle Grounds Mobile India</p>
+        </section>
+        <footer class="card__footer">
+          <p class="card__job-title">YTIET Quadrangle</p>
+          <button class="card__btn" id="flipCard">View</button>
+        </footer>
+      </div>
+      
+      <div class="card-back">
+        <div>
+          <p>More details about the event...</p>
+          <button class="card__btn" id="readMore">Read More</button>
+          <button class="back-btn" id="flipBack">Back</button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cardContent = document.querySelector(".card-content");
+      const flipCardBtn = document.getElementById("flipCard");
+      const flipBackBtn = document.getElementById("flipBack");
+      const readMoreBtn = document.getElementById("readMore");
+      const overlay = document.getElementById("overlay");
+      const closePopup = document.getElementById("closePopup");
+
+      flipCardBtn.addEventListener("click", () => cardContent.classList.add("flipped"));
+      flipBackBtn.addEventListener("click", () => cardContent.classList.remove("flipped"));
+      readMoreBtn.addEventListener("click", () => overlay.style.display = "flex");
+      closePopup.addEventListener("click", () => overlay.style.display = "none");
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) overlay.style.display = "none";
+      });
+    });
+  </script>
+</body>
+</html>

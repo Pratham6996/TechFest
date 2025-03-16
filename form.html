@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TechFest | Registration</title>
+    <link rel="stylesheet" href="form-style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header>Registration Form</header>
+      <form action="https://api.web3forms.com/submit" method="POST" class="form">
+        
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="6bf72463-3945-4b3d-9e7a-b9bdb442757c" />
+
+        <div class="input-box">
+          <label>Full Name</label>
+          <input type="text" name="Full Name" placeholder="Enter full name" required />
+        </div>
+
+        <div class="input-box">
+          <label>Email Address</label>
+          <input type="email" name="Email" placeholder="Enter email address" required />
+        </div>
+
+        <div class="input-box">
+          <label>Phone Number</label>
+          <input 
+            type="text" 
+            name="Phone Number"
+            placeholder="Enter phone number"
+            required 
+            maxlength="10" 
+            minlength="10" 
+            pattern="[0-9]{10}" 
+            oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10);" 
+          />
+        </div>
+
+        <div class="input-box">
+          <label>College Name</label>
+          <input type="text" name="College Name" placeholder="Enter college name" required />
+        </div>
+
+        <div class="input-box">
+          <label>Branch</label>
+          <select name="Branch" id="branch" onchange="toggleOtherBranch()" required>
+            <option value="Computer Engineering">Computer Engineering</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+            <option value="Civil Engineering">Civil Engineering</option>
+            <option value="AI/ML">AI/ML</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Information Technology">Information Technology</option>
+          </select>
+          <input type="text" id="other-branch" name="Other Branch" placeholder="Enter your branch" style="display:none;" />
+        </div>
+
+        <div class="input-box">
+          <label>Select Events (You can choose multiple)</label>
+          <div class="multi-select">
+              <input type="checkbox" id="bgmi" name="Event[]" value="BGMI">
+              <label for="bgmi">BGMI</label>
+      
+              <input type="checkbox" id="tech-quiz" name="Event[]" value="Tech Quiz">
+              <label for="tech-quiz">Tech Quiz</label>
+      
+              <input type="checkbox" id="treasure-hunt" name="Event[]" value="Treasure Hunt">
+              <label for="treasure-hunt">Treasure Hunt</label>
+      
+              <input type="checkbox" id="ai-pictionary" name="Event[]" value="AI Pictionary">
+              <label for="ai-pictionary">AI Pictionary</label>
+
+              <input type="checkbox" id="error-finding" name="Event[]" value="Error Finding">
+              <label for="error-finding">Error Finding</label>
+             
+          </div>
+      </div>
+      
+
+        <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="Gender" value="Male" checked />
+              <label for="check-male">Male</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="Gender" value="Female" />
+              <label for="check-female">Female</label>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+      <p class="entry-fee"><span>Entry fee is ₹10 per game. You will be contacted after form submission for payment based on your selected games.</span></p>
+  </div>
+  
+          <!-- Payment Screenshot Upload -->
+          <!-- <div class="input-box">
+              <label>Upload UPI Payment Screenshot (JPEG/PNG/PDF, Max: 2MB)</label>
+              <input type="file" name="Payment Screenshot" accept=".jpg, .jpeg, .png, .pdf" required />
+          </div> -->
+      
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <script>
+      function toggleOtherBranch() {
+        var branchSelect = document.getElementById("branch");
+        var otherBranch = document.getElementById("other-branch");
+        if (branchSelect.value === "Other") {
+          otherBranch.style.display = "block";
+          otherBranch.setAttribute("required", "true");
+        } else {
+          otherBranch.style.display = "none";
+          otherBranch.removeAttribute("required");
+        }
+      }
+    </script>
+
+  </body>
+</html>
