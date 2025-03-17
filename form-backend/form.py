@@ -2,16 +2,18 @@ import gspread
 import pywhatkit as kit
 import time
 
-gc = gspread.service_account(filename="d:/Web Projects/TechFest/TechFest/form-backend/credentials.json")
+gc = gspread.service_account(filename="D:/Web Projects/TechFest/TechFest/form-backendcredentials.json")
 sheet = gc.open("TechFest").sheet1 
 data = sheet.get_all_records()
 
 entry_fees = {
-    "BGMI": (100, "🎯"),
-    "Tech Quiz": (200, "🧠"),
-    "AI Pictionary": (300, "🎨"),
-    "Treasure Hunt": (400, "🗺️"),
-    "Error Finding": (500, "🐞")
+    "BGMI": (200, "🎯"),
+    "Tech Quiz": (400, "🧠"),
+    "Treasure Hunt": (500, "🗺"),
+    "Error Finding": (500, "🐞"),
+    "Project Competition": (300, "🏆"),
+    "Paper Presentation": (300, "📄"),
+    "Poster Presentation": (300, "🖼")
 }
 
 for row in data:
@@ -23,7 +25,7 @@ for row in data:
         events_selected = [event.strip() for event in row[event_key].lstrip(":").split(",") if event.strip() in entry_fees]
         
         if not events_selected:
-            print(f"⚠️ No valid events found for {name}. Skipping...")
+            print(f"⚠ No valid events found for {name}. Skipping...")
             continue
 
         total_fee = sum(entry_fees[event][0] for event in events_selected)
@@ -37,12 +39,12 @@ You have selected the following events:
 
 Your total entry fee for the above events is ₹{total_fee}.  
 
-Please scan the QR below to complete your payment and share the transaction screenshot here.  
+Please scan the QR above to complete your payment and share the transaction screenshot here.  
 
 Thank you, and we’re excited to see you at the event! 🚀🎭  
 """
 
-        kit.sendwhats_image(phone, "d:/Web Projects/TechFest/TechFest/form-backend/upi.jpg", caption=message)
-        time.sleep(20)
+        kit.sendwhats_image(phone, "D:/Web Projects/TechFest/TechFest/form-backendupi.jpg", caption=message)
+        time.sleep(30)
 
 print(" Messages sent successfully with UPI image!")

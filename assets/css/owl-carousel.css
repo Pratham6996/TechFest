@@ -185,3 +185,8 @@
     height: 100%;
     width: 100%; }
   
+    .owl-carousel .owl-item img {
+      width: 100%;  /* Adjust width to fit the container */
+      height: 200px; /* Set a fixed height (adjust as needed) */
+      object-fit: cover; /* Ensures images fill the space without distortion */
+  }

@@ -170,6 +170,11 @@ body {
   margin: 20px auto;
 }
 
+.main-content h5{
+  color:#ffffff;
+  margin-top: -10px;
+}
+
 .dark-bg h2 {
   color: #fff;
 }
@@ -210,6 +215,141 @@ body {
   opacity: 0.9;
 }
 
+.header-area {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  background-color: #000;
+  height: 150px;
+  padding: 0 20px;
+  color: #fff;
+  margin-top: 25px;
+}
+
+.header-area .container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.header-logo {
+  height: 80px;
+  margin-right: 100px; /* Add some space between logo and text */
+  margin-left: 110px;
+}
+
+.header-content h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #505050;
+  margin-bottom: 0;
+  display: inline;
+}
+
+.header-content p {
+  font-size: 14px;
+  color: #4b4949;
+  margin: 0;
+}
+
+
+.header-area .main-nav {
+  min-height: 80px;
+}
+
+.header-area .main-nav .logo {
+  line-height: 80px;
+  color: #656c74;
+  font-size: 28px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.header-area .main-nav .nav {
+  float: right;
+  margin-top: 27px;
+}
+
+.header-area .main-nav .nav li {
+  padding: 0 20px;
+}
+
+.header-area .main-nav .nav li a {
+  display: block;
+  font-weight: 500;
+  font-size: 14px;
+  color: #181a1b;
+  line-height: 40px;
+  transition: color 0.3s ease;
+}
+
+.header-area .main-nav .nav li a:hover,
+.header-area .main-nav .nav li a.active {
+  color: #656c74;
+}
+
+.header-area .main-nav .menu-trigger {
+  cursor: pointer;
+  position: absolute;
+  top: 23px;
+  right: 40px;
+  width: 32px;
+  height: 40px;
+  display: none;
+}
+
+.header-area .main-nav .menu-trigger span,
+.header-area .main-nav .menu-trigger span:before,
+.header-area .main-nav .menu-trigger span:after {
+  background-color: #1e1e1e;
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  left: 0;
+  transition: all 0.4s;
+}
+
+.header-area .main-nav .menu-trigger span:before {
+  top: -10px;
+}
+
+.header-area .main-nav .menu-trigger span:after {
+  top: 10px;
+}
+
+@media (max-width: 767px) {
+  .header-area {
+      background-color: #f7f7f7;
+      padding: 0 15px;
+      height: 80px;
+      text-align: center;
+  }
+
+  .header-area .main-nav .nav {
+      display: none;
+  }
+
+  .header-area .main-nav .menu-trigger {
+      display: block !important;
+  }
+
+  .header-area .main-nav .nav li {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+  }
+
+  .header-area .main-nav .nav li a {
+      height: 50px;
+      line-height: 50px;
+      background: #f7f7f7;
+      color: #232d39;
+  }
+
+  .header-area .main-nav .nav li a:hover {
+      background: #eee;
+      color: #656c74;
+  }
+}
 
 .text-button a {
   font-size: 14px;
