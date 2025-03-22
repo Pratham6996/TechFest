@@ -219,7 +219,7 @@ body {
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
-  background-color: #000;
+  background-color: #070707;
   height: 150px;
   padding: 0 20px;
   color: #fff;
@@ -257,7 +257,7 @@ body {
 }
 .header-content p {
   font-size: 0.9rem;
-  color: #555;
+  color: #f6f3f3;
 }
 .main-banner {
   background: url('assets/images/banner.jpg') no-repeat center center;
@@ -351,14 +351,14 @@ body {
 .header-content h1 {
   font-size: 20px;
   font-weight: 600;
-  color: #505050;
+  color: #f8f4f4;
   margin-bottom: 0;
   display: inline;
 }
 
 .header-content p {
   font-size: 14px;
-  color: #4b4949;
+  color: #f5f4f4;
   margin: 0;
 }
 
@@ -873,12 +873,12 @@ header
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
-  color: #505050;
+  color: #f7f2f2;
 }
 
 .header-content p {
   font-size: 0.9rem;
-  color: #4b4949;
+  color: #f3efef;
   margin: 0;
 }
 
