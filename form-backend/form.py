@@ -1,21 +1,25 @@
 import gspread
 import pywhatkit as kit
+import pyautogui
 import time
 
-gc = gspread.service_account(filename="D:/Web Projects/TechFest/TechFest/form-backendcredentials.json")
+# Load Google Sheets data
+gc = gspread.service_account(filename="D:/Web Projects/TechFest/TechFest/form-backend/credentials.json")
 sheet = gc.open("TechFest").sheet1 
 data = sheet.get_all_records()
 
+# Entry fees and event icons
 entry_fees = {
     "BGMI": (200, "🎯"),
     "Tech Quiz": (400, "🧠"),
     "Treasure Hunt": (500, "🗺"),
-    "Error Finding": (500, "🐞"),
+    "Error Finding": (400, "🐞"),
     "Project Competition": (300, "🏆"),
     "Paper Presentation": (300, "📄"),
     "Poster Presentation": (300, "🖼")
 }
 
+# Iterate through each participant
 for row in data:
     name = row.get("Full Name", "").lstrip(":").strip()
     phone = f'+91{row.get("Phone Number", "").lstrip(":").strip()}'
@@ -44,7 +48,14 @@ Please scan the QR above to complete your payment and share the transaction scre
 Thank you, and we’re excited to see you at the event! 🚀🎭  
 """
 
-        kit.sendwhats_image(phone, "D:/Web Projects/TechFest/TechFest/form-backendupi.jpg", caption=message)
-        time.sleep(30)
+        # Send WhatsApp message with image
+        kit.sendwhats_image(phone, "D:/Web Projects/TechFest/TechFest/form-backend/upi.jpg", caption=message)
+
+        # Wait for WhatsApp Web to open
+        time.sleep(10)  # Adjust as needed
+
+        # Press "Enter" to send the message automatically
+        pyautogui.press("enter")
+        time.sleep(5)  # Small delay before sending the next message
 
 print(" Messages sent successfully with UPI image!")
