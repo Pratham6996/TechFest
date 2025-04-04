@@ -21,12 +21,12 @@ entry_fees = {
 
 # Iterate through each participant
 for row in data:
-    name = row.get("Full Name", "").lstrip(":").strip()
-    phone = f'+91{row.get("Phone Number", "").lstrip(":").strip()}'
+    name = str(row.get("Full Name", "")).strip()
+    phone = f'+91{str(row.get("Phone Number", "")).strip()}'
     event_key = next((key for key in row.keys() if key.strip().lower() == "event"), None)
 
     if event_key and row[event_key]:
-        events_selected = [event.strip() for event in row[event_key].lstrip(":").split(",") if event.strip() in entry_fees]
+        events_selected = [event.strip() for event in str(row[event_key]).split(",") if event.strip() in entry_fees]
         
         if not events_selected:
             print(f"⚠ No valid events found for {name}. Skipping...")
@@ -58,4 +58,5 @@ Thank you, and we’re excited to see you at the event! 🚀🎭
         pyautogui.press("enter")
         time.sleep(5)  # Small delay before sending the next message
 
-print(" Messages sent successfully with UPI image!")
+print(""
+" Messages sent successfully with UPI image!")
