@@ -118,6 +118,14 @@ html[xmlns] .clearfix {
 * html .clearfix {
   height: 1%;
 }
+marquee {
+  font-weight: bold;
+  font-style: italic;
+  background-color: black;
+  color: white;
+  padding: 10px 5px;
+  margin-top:5px;
+}
 
 ul,
 li {
