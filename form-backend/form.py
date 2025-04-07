@@ -11,12 +11,12 @@ data = sheet.get_all_records()
 # Entry fees and event icons
 entry_fees = {
     "BGMI": (200, "🎯"),
-    "Tech Quiz": (400, "🧠"),
-    "Treasure Hunt": (500, "🗺"),
+    "Tech Quiz": (80, "🧠"),
+    "Treasure Hunt": (100, "🗺"),
     "Error Finding": (400, "🐞"),
     "Project Competition": (300, "🏆"),
     "Paper Presentation": (300, "📄"),
-    "Poster Presentation": (300, "🖼")
+    "Poster Presentation": (300, "🖼")      
 }
 
 # Iterate through each participant
